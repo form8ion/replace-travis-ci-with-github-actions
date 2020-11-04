@@ -31,8 +31,10 @@ suite('travis-ci', () => {
         }
       }));
 
-    await remove({projectRoot});
-
+    assert.deepEqual(
+      await remove({projectRoot}),
+      {nextSteps: [{summary: 'Remove the Travis CI badge from the README'}]}
+    );
     assert.calledWith(fs.unlink, `${projectRoot}/.travis.yml`);
     assert.calledWith(fs.writeFile, `${projectRoot}/package.json`, JSON.stringify(packageContentsWithoutTravisLint));
   });

@@ -17,13 +17,11 @@ Given('the travis config lint script is disabled', async function () {
   );
 });
 
-Then('the travis config lint script is removed', async function () {
+Then('the travis config is removed', async function () {
   const pkg = JSON.parse(await fs.readFile(`${process.cwd()}/package.json`, 'utf-8'));
 
   assert.isUndefined(pkg.scripts['disabled:lint:travis']);
   assert.isUndefined(pkg.scripts['lint:travis']);
-});
-
-Then('the travis config file removed', async function () {
   assert.isFalse(await fileExists(`${process.cwd()}/.travis.yml`));
+  assert.deepEqual(this.results.nextSteps, [{summary: 'Remove the Travis CI badge from the README'}]);
 });

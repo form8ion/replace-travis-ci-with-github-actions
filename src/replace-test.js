@@ -17,9 +17,9 @@ suite('replace', () => {
 
   test('that travis is replaced by github-actions', async () => {
     const projectRoot = any.string();
+    const travisResults = any.simpleObject();
+    travisRemover.default.withArgs({projectRoot}).resolves(travisResults);
 
-    await replace({projectRoot});
-
-    assert.calledWith(travisRemover.default, {projectRoot});
+    assert.deepEqual(await replace({projectRoot}), travisResults);
   });
 });

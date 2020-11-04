@@ -13,4 +13,6 @@ export default async function ({projectRoot}) {
     fs.unlink(`${projectRoot}/.travis.yml`),
     fs.writeFile(pathToPackageFile, JSON.stringify({...packageContents, scripts: remainingScripts}))
   ]);
+
+  return {nextSteps: [{summary: 'Remove the Travis CI badge from the README'}]};
 }
