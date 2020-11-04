@@ -36,8 +36,18 @@ $ npm install @form8ion/replace-travis-ci-with-github-actions --save-prod
 
 ### Example
 
+#### Import
+
 ```javascript
-import replaceTravisCiWithGithubActions from '@form8ion/replace-travis-ci-with-github-actions';
+import {replace} from '@form8ion/replace-travis-ci-with-github-actions';
+```
+
+#### Execute
+
+```javascript
+(async () => {
+  await replace({projectRoot: process.cwd()});
+})();
 ```
 
 ## Contributing
