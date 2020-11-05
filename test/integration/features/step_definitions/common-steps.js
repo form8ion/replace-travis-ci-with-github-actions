@@ -22,5 +22,5 @@ After(function () {
 });
 
 When('the service is replaced', async function () {
-  this.results = await replace({projectRoot: process.cwd()});
+  this.results = await replace({projectRoot: process.cwd(), vcs: {owner: any.word(), name: any.word()}});
 });

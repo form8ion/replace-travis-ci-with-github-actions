@@ -9,5 +9,8 @@ stubbedFs();
 // #### Execute
 
 (async () => {
-  await replace({projectRoot: process.cwd()});
+  await replace({
+    projectRoot: process.cwd(),
+    vcs: {owner: 'foo', name: 'bar'}
+  });
 })();
