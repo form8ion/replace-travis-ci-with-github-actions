@@ -1,4 +1,4 @@
-Feature: Package
+Feature: travis-lint
 
   Scenario: enabled travis config lint
     Given the travis config lint script is enabled

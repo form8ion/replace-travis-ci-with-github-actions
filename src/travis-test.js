@@ -2,6 +2,7 @@ import {promises as fs} from 'fs';
 import {assert} from 'chai';
 import sinon from 'sinon';
 import any from '@travi/any';
+import * as execa from '../thirdparty-wrappers/execa';
 import remove from './travis';
 
 suite('travis-ci', () => {
@@ -13,6 +14,7 @@ suite('travis-ci', () => {
     sandbox.stub(fs, 'readFile');
     sandbox.stub(fs, 'writeFile');
     sandbox.stub(fs, 'unlink');
+    sandbox.stub(execa, 'default');
   });
 
   teardown(() => sandbox.restore());
@@ -37,5 +39,6 @@ suite('travis-ci', () => {
     );
     assert.calledWith(fs.unlink, `${projectRoot}/.travis.yml`);
     assert.calledWith(fs.writeFile, `${projectRoot}/package.json`, JSON.stringify(packageContentsWithoutTravisLint));
+    assert.calledWith(execa.default, 'npm uninstall travis-lint @travi/travis-lint');
   });
 });
