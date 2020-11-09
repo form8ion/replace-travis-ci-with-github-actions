@@ -1,12 +1,9 @@
 import {promises as fs} from 'fs';
 import {scaffold} from '@form8ion/github-actions-node-ci';
-
-function isPackage(publishConfig) {
-  return publishConfig;
-}
+import determineProjectType from './project-type';
 
 function isPublicPackage(publishConfig) {
-  return isPackage(publishConfig) && 'public' === publishConfig.access;
+  return publishConfig && 'public' === publishConfig.access;
 }
 
 function determineVisibility(publishConfig) {
@@ -14,12 +11,14 @@ function determineVisibility(publishConfig) {
 }
 
 export default async function ({projectRoot, vcs}) {
-  const {scripts, publishConfig} = JSON.parse(await fs.readFile(`${projectRoot}/package.json`, 'utf-8'));
+  const packageDetails = JSON.parse(await fs.readFile(`${projectRoot}/package.json`, 'utf-8'));
+  const {scripts, publishConfig} = packageDetails;
 
   return scaffold({
     projectRoot,
     vcs,
     tests: {...scripts['test:unit'] && {unit: true}},
-    visibility: determineVisibility(publishConfig)
+    visibility: determineVisibility(publishConfig),
+    projectType: determineProjectType(packageDetails)
   });
 }
