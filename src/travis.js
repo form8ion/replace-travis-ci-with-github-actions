@@ -13,7 +13,7 @@ export default async function ({projectRoot}) {
   await Promise.all([
     fs.unlink(`${projectRoot}/.travis.yml`),
     fs.writeFile(pathToPackageFile, JSON.stringify({...packageContents, scripts: remainingScripts})),
-    execa('npm uninstall travis-lint @travi/travis-lint')
+    execa('npm', ['uninstall', 'travis-lint', '@travi/travis-lint'])
   ]);
 
   return {nextSteps: [{summary: 'Remove the Travis CI badge from the README'}]};

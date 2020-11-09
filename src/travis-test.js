@@ -39,6 +39,6 @@ suite('travis-ci', () => {
     );
     assert.calledWith(fs.unlink, `${projectRoot}/.travis.yml`);
     assert.calledWith(fs.writeFile, `${projectRoot}/package.json`, JSON.stringify(packageContentsWithoutTravisLint));
-    assert.calledWith(execa.default, 'npm uninstall travis-lint @travi/travis-lint');
+    assert.calledWith(execa.default, 'npm', ['uninstall', 'travis-lint', '@travi/travis-lint']);
   });
 });

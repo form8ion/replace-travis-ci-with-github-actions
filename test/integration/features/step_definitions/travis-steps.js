@@ -25,5 +25,5 @@ Then('the travis config is removed', async function () {
   assert.isUndefined(pkg.scripts['lint:travis']);
   assert.isFalse(await fileExists(`${process.cwd()}/.travis.yml`));
   assert.includeDeepMembers(this.results.nextSteps, [{summary: 'Remove the Travis CI badge from the README'}]);
-  td.verify(this.execa('npm uninstall travis-lint @travi/travis-lint'));
+  td.verify(this.execa('npm', ['uninstall', 'travis-lint', '@travi/travis-lint']));
 });
