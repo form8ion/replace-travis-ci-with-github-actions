@@ -1,5 +1,6 @@
 import {promises as fs} from 'fs';
 import {scaffold} from '@form8ion/github-actions-node-ci';
+import {info} from '@travi/cli-messages';
 import determineProjectType from './project-type';
 
 function isPublicPackage(publishConfig) {
@@ -11,6 +12,8 @@ function determineVisibility(publishConfig) {
 }
 
 export default async function ({projectRoot, vcs}) {
+  info('Enabling CI with GitHub Actions', {level: 'secondary'});
+
   const packageDetails = JSON.parse(await fs.readFile(`${projectRoot}/package.json`, 'utf-8'));
   const {scripts, publishConfig} = packageDetails;
 
