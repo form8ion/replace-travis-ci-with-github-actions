@@ -14,6 +14,8 @@ utility to remove Travis-CI configuration and enable GitHub Actions
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -36,8 +38,21 @@ $ npm install @form8ion/replace-travis-ci-with-github-actions --save-prod
 
 ### Example
 
+#### Import
+
 ```javascript
-import replaceTravisCiWithGithubActions from '@form8ion/replace-travis-ci-with-github-actions';
+import {replace} from '@form8ion/replace-travis-ci-with-github-actions';
+```
+
+#### Execute
+
+```javascript
+(async () => {
+  await replace({
+    projectRoot: process.cwd(),
+    vcs: {owner: 'foo', name: 'bar'}
+  });
+})();
 ```
 
 ## Contributing

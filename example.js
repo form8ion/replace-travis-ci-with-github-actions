@@ -1,3 +1,16 @@
+// #### Import
 // remark-usage-ignore-next
-/* eslint-disable-next-line no-unused-vars */
-import replaceTravisCiWithGithubActions from './lib/index.cjs';
+import stubbedFs from 'mock-fs';
+import {replace} from './lib/index.cjs';
+
+// remark-usage-ignore-next
+stubbedFs();
+
+// #### Execute
+
+(async () => {
+  await replace({
+    projectRoot: process.cwd(),
+    vcs: {owner: 'foo', name: 'bar'}
+  });
+})();
