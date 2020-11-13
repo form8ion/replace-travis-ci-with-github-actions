@@ -61,7 +61,7 @@
     "babel-plugin-istanbul": "6.0.0",
     "ban-sensitive-files": "1.9.13",
     "chai": "4.2.0",
-    "codecov": "3.8.0",
+    "codecov": "3.8.1",
     "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.3.0",
     "gherkin-lint": "4.1.3",
