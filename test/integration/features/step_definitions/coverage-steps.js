@@ -39,7 +39,7 @@ Then('coverage will be reported', async function () {
   const ciWorkflow = safeLoad(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
 
   assert.deepInclude(
-    ciWorkflow.jobs.build.steps,
+    ciWorkflow.jobs.verify.steps,
     {name: 'Upload coverage data to Codecov', run: 'npm run coverage:report'}
   );
 });
@@ -48,7 +48,7 @@ Then('coverage will not be reported', async function () {
   const ciWorkflow = safeLoad(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
 
   assert.notDeepInclude(
-    ciWorkflow.jobs.build.steps,
+    ciWorkflow.jobs.verify.steps,
     {name: 'Upload coverage data to Codecov', run: 'npm run coverage:report'}
   );
 });
