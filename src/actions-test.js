@@ -48,6 +48,20 @@ suite('GitHub Actions', () => {
     assert.equal(await enable({projectRoot, vcs}), actionsResults);
   });
 
+  test('that integration-tests is set to `true` if the script exists', async () => {
+    const projectRoot = any.string();
+    const vcs = any.simpleObject();
+    const actionsResults = any.simpleObject();
+    const packageDetails = {scripts: {'test:integration': any.string()}};
+    fs.readFile.withArgs(`${projectRoot}/package.json`, 'utf-8').resolves(JSON.stringify(packageDetails));
+    projectTypeResolver.default.withArgs(packageDetails).returns(projectType);
+    actionsScaffolder.scaffold
+      .withArgs({projectRoot, vcs, tests: {integration: true}, visibility: 'Private', projectType})
+      .resolves(actionsResults);
+
+    assert.equal(await enable({projectRoot, vcs}), actionsResults);
+  });
+
   test('that `visibility` is passed as `Public` if the project is a public package', async () => {
     const projectRoot = any.string();
     const vcs = any.simpleObject();

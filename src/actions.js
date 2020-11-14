@@ -20,7 +20,10 @@ export default async function ({projectRoot, vcs}) {
   return scaffold({
     projectRoot,
     vcs,
-    tests: {...scripts['test:unit'] && {unit: true}},
+    tests: {
+      ...scripts['test:unit'] && {unit: true},
+      ...scripts['test:integration'] && {integration: true}
+    },
     visibility: determineVisibility(publishConfig),
     projectType: determineProjectType(packageDetails)
   });
