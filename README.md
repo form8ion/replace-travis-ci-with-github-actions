@@ -11,6 +11,7 @@ utility to remove Travis-CI configuration and enable GitHub Actions
 
 ## Table of Contents
 
+* [Motivation](#motivation)
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
@@ -19,6 +20,15 @@ utility to remove Travis-CI configuration and enable GitHub Actions
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
+
+## Motivation
+
+While Travis CI had a big impact on moving such services forward, I've had
+[more](https://travis-ci.community/t/imported-config-results-in-out-of-order-build-stage/8381/8?u=travi)
+and [more](https://github.com/travis-ci/travis.rb/issues/732) trouble using
+them lately and gotten worse support when needed. They've even recently
+[changed their pricing model](https://blog.travis-ci.com/2020-11-02-travis-ci-new-billing)
+to be far less friendly to OSS projects.
 
 ## Usage
 
