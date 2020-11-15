@@ -16,6 +16,10 @@ suite('project-type', () => {
     assert.equal(determine({main: any.string()}), projectTypes.PACKAGE);
   });
 
+  test('that the type is determined to be a package when `pacakgeConfig` is defined', () => {
+    assert.equal(determine({publishConfig: any.simpleObject()}), projectTypes.PACKAGE);
+  });
+
   test('that the type is determined to be a CLI when `bin` is defined', () => {
     assert.equal(determine({bin: any.simpleObject()}), projectTypes.CLI);
   });
