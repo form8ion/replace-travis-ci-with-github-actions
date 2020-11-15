@@ -5,6 +5,11 @@ Feature: project-type
     When the service is replaced
     Then pushes to prerelease branches will be built
 
+  Scenario: simple package
+    Given the project is a simple package
+    When the service is replaced
+    Then pushes to prerelease branches will be built
+
   Scenario: cli
     Given the project is a cli
     When the service is replaced

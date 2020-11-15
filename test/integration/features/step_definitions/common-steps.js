@@ -24,7 +24,11 @@ async function updatePackageDetailsForProjectType(type = any.fromList(Object.val
   }
 
   if (projectTypes.PACKAGE === type) {
-    updatedContents = {...packageContents, main: any.string()};
+    updatedContents = {...packageContents, main: any.string(), publishConfig: any.simpleObject()};
+  }
+
+  if (`simple-${projectTypes.PACKAGE}` === type) {
+    updatedContents = {...packageContents, publishConfig: any.simpleObject()};
   }
 
   await fs.writeFile(pathToPackageFile, JSON.stringify(updatedContents));

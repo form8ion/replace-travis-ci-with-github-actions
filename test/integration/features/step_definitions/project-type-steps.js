@@ -16,6 +16,10 @@ Given('the project is a package', async function () {
   this.projectType = projectTypes.PACKAGE;
 });
 
+Given('the project is a simple package', async function () {
+  this.projectType = `simple-${projectTypes.PACKAGE}`;
+});
+
 Then('pushes to prerelease branches will be built', async function () {
   const ciWorkflow = safeLoad(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
 
