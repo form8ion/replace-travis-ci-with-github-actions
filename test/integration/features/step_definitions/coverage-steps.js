@@ -16,23 +16,11 @@ Given('the project is not tested', async function () {
 });
 
 Given('the project is public', async function () {
-  const pathToPackageFile = `${process.cwd()}/package.json`;
-  const packageContents = JSON.parse(await fs.readFile(pathToPackageFile, 'utf-8'));
-
-  await fs.writeFile(
-    pathToPackageFile,
-    JSON.stringify({...packageContents, publishConfig: {access: 'public'}})
-  );
+  this.visibility = 'Public';
 });
 
 Given('the project is private', async function () {
-  const pathToPackageFile = `${process.cwd()}/package.json`;
-  const packageContents = JSON.parse(await fs.readFile(pathToPackageFile, 'utf-8'));
-
-  await fs.writeFile(
-    pathToPackageFile,
-    JSON.stringify({...packageContents, publishConfig: {access: 'restricted'}})
-  );
+  this.visibility = 'Private';
 });
 
 Then('coverage will be reported', async function () {

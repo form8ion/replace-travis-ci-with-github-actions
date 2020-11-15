@@ -14,8 +14,9 @@ Feature: coverage
     Then the workflow is defined for GitHub Actions
     And coverage will not be reported
 
-  Scenario: unit tested
-    Given the project is unit tested
+  Scenario: unit tested package
+    Given the project is published
+    And the project is unit tested
     And the project is public
     When the service is replaced
     Then the workflow is defined for GitHub Actions

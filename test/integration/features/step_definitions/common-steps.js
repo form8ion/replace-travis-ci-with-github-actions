@@ -10,7 +10,7 @@ import {safeDump} from 'js-yaml';
 let replace;
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
 
-async function updatePackageDetailsForProjectType(type = any.fromList(Object.values(projectTypes))) {
+async function updatePackageDetailsForProjectType(type = any.fromList(Object.values(projectTypes)), visibility) {
   let updatedContents;
   const pathToPackageFile = `${process.cwd()}/package.json`;
   const packageContents = JSON.parse(await fs.readFile(pathToPackageFile, 'utf-8'));
@@ -20,15 +20,38 @@ async function updatePackageDetailsForProjectType(type = any.fromList(Object.val
   }
 
   if (projectTypes.CLI === type) {
-    updatedContents = {...packageContents, bin: {foo: any.string()}};
+    updatedContents = {
+      ...packageContents,
+      bin: {foo: any.string()},
+      publishConfig: {
+        ...any.simpleObject(),
+        ...'Public' === visibility && {access: 'public'},
+        ...'Private' === visibility && {access: 'restricted'}
+      }
+    };
   }
 
   if (projectTypes.PACKAGE === type) {
-    updatedContents = {...packageContents, main: any.string(), publishConfig: any.simpleObject()};
+    updatedContents = {
+      ...packageContents,
+      main: any.string(),
+      publishConfig: {
+        ...any.simpleObject(),
+        ...'Public' === visibility && {access: 'public'},
+        ...'Private' === visibility && {access: 'restricted'}
+      }
+    };
   }
 
   if (`simple-${projectTypes.PACKAGE}` === type) {
-    updatedContents = {...packageContents, publishConfig: any.simpleObject()};
+    updatedContents = {
+      ...packageContents,
+      publishConfig: {
+        ...any.simpleObject(),
+        ...'Public' === visibility && {access: 'public'},
+        ...'Private' === visibility && {access: 'restricted'}
+      }
+    };
   }
 
   await fs.writeFile(pathToPackageFile, JSON.stringify(updatedContents));
@@ -65,7 +88,7 @@ After(function () {
 
 When('the service is replaced', async function () {
   this.vcs = {owner: any.word(), name: any.word()};
-  await updatePackageDetailsForProjectType(this.projectType);
+  await updatePackageDetailsForProjectType(this.projectType, this.visibility);
 
   this.results = await replace({projectRoot: process.cwd(), vcs: this.vcs});
 });
