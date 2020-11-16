@@ -18,6 +18,24 @@ Given('the travis config lint script is disabled', async function () {
   );
 });
 
+Given('there is a travis status badge in the README', async function () {
+  await fs.writeFile(
+    `${process.cwd()}/README.md`,
+    `# project-name
+
+<!--status-badges start -->
+
+[![Build Status][ci-badge]][ci-link]
+
+<!--status-badges end -->
+
+[ci-link]: https://travis-ci.com/foo/bar
+
+[ci-badge]: https://img.shields.io/travis/com/foo/bar.svg?branch=master
+`
+  );
+});
+
 Then('the travis config is removed', async function () {
   const pkg = JSON.parse(await fs.readFile(`${process.cwd()}/package.json`, 'utf-8'));
 
@@ -26,4 +44,8 @@ Then('the travis config is removed', async function () {
   assert.isFalse(await fileExists(`${process.cwd()}/.travis.yml`));
   assert.includeDeepMembers(this.results.nextSteps, [{summary: 'Remove the Travis CI badge from the README'}]);
   td.verify(this.execa('npm', ['uninstall', 'travis-lint', '@travi/travis-lint']));
+});
+
+Then('the travis status badge is removed', async function () {
+  assert.notInclude(await fs.readFile(`${process.cwd()}/README.md`, 'utf-8'), 'https://travis-ci.com');
 });

@@ -71,13 +71,7 @@ Before(function () {
 
 <!--status-badges start -->
 
-[![Build Status][ci-badge]][ci-link]
-
 <!--status-badges end -->
-
-[ci-link]: https://travis-ci.com/foo/bar
-
-[ci-badge]: https://img.shields.io/travis/com/foo/bar.svg?branch=master
 `
   });
 });
