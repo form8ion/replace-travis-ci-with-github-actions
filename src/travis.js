@@ -32,5 +32,5 @@ export default async function ({projectRoot}) {
     execa('npm', ['uninstall', 'travis-lint', '@travi/travis-lint'])
   ]);
 
-  return {nextSteps: [{summary: 'Remove the Travis CI badge from the README'}]};
+  return {};
 }

@@ -46,10 +46,7 @@ suite('travis-ci', () => {
     use.withArgs(removeBadgePlugin).returns({process});
     process.withArgs(existingReadmeContents).resolves(updatedFileContents);
 
-    assert.deepEqual(
-      await remove({projectRoot}),
-      {nextSteps: [{summary: 'Remove the Travis CI badge from the README'}]}
-    );
+    assert.deepEqual(await remove({projectRoot}), {});
     assert.calledWith(fs.unlink, `${projectRoot}/.travis.yml`);
     assert.calledWith(fs.writeFile, `${projectRoot}/package.json`, JSON.stringify(packageContentsWithoutTravisLint));
     assert.calledWith(execa.default, 'npm', ['uninstall', 'travis-lint', '@travi/travis-lint']);
