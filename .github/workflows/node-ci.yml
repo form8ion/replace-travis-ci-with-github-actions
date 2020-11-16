@@ -6,6 +6,7 @@ name: Node.js CI
       - alpha
       - beta
       - 'renovate/**'
+      - node-versions
   pull_request:
     types:
       - opened
