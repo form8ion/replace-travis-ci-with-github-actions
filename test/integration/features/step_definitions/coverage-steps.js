@@ -1,5 +1,5 @@
 import {promises as fs} from 'fs';
-import {safeLoad} from 'js-yaml';
+import {load} from 'js-yaml';
 import any from '@travi/any';
 import {assert} from 'chai';
 import {Given, Then} from '@cucumber/cucumber';
@@ -24,7 +24,7 @@ Given('the project is private', async function () {
 });
 
 Then('coverage will be reported', async function () {
-  const ciWorkflow = safeLoad(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
+  const ciWorkflow = load(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
 
   assert.deepInclude(
     ciWorkflow.jobs.verify.steps,
@@ -33,7 +33,7 @@ Then('coverage will be reported', async function () {
 });
 
 Then('coverage will not be reported', async function () {
-  const ciWorkflow = safeLoad(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
+  const ciWorkflow = load(await fs.readFile(`${process.cwd()}/.github/workflows/node-ci.yml`, 'utf-8'));
 
   assert.notDeepInclude(
     ciWorkflow.jobs.verify.steps,
