@@ -2,6 +2,9 @@
   "name": "@form8ion/replace-travis-ci-with-github-actions",
   "description": "utility to remove Travis-CI configuration and enable GitHub Actions",
   "license": "MIT",
+  "engines": {
+    "node": ">=12.17"
+  },
   "version": "0.0.0-semantically-released",
   "files": [
     "example.js",
@@ -24,6 +27,7 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "run-s lint:js -- --fix",
     "lint:md": "remark . --frail",
+    "lint:engines": "check-engine",
     "generate:md": "remark . --output",
     "pregenerate:md": "run-s build",
     "lint:sensitive": "ban",
@@ -62,6 +66,7 @@
     "babel-plugin-istanbul": "6.0.0",
     "ban-sensitive-files": "1.9.15",
     "chai": "4.3.4",
+    "check-engine": "1.10.0",
     "codecov": "3.8.2",
     "cross-env": "7.0.3",
     "cz-conventional-changelog": "3.3.0",
