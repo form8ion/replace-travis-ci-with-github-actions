@@ -15,7 +15,7 @@ async function updatePackageDetailsForProjectType(type = any.fromList(Object.val
   const pathToPackageFile = `${process.cwd()}/package.json`;
   const packageContents = JSON.parse(await fs.readFile(pathToPackageFile, 'utf-8'));
 
-  if (projectTypes.APPLICATION === type) {
+  if (projectTypes.APPLICATION === type || projectTypes.MONOREPO === type) {
     updatedContents = {...packageContents, private: true};
   }
 
