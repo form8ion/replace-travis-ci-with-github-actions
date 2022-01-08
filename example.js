@@ -1,10 +1,15 @@
 // #### Import
-// remark-usage-ignore-next
+// remark-usage-ignore-next 2
 import stubbedFs from 'mock-fs';
+import {dump} from 'js-yaml';
 import {replace} from './lib/index.cjs';
 
-// remark-usage-ignore-next
-stubbedFs();
+// remark-usage-ignore-next 5
+stubbedFs({
+  'package.json': JSON.stringify({scripts: {}, publishConfig: {}}),
+  'README.md': '',
+  '.travis.yml': dump({})
+});
 
 // #### Execute
 
