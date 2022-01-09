@@ -10,7 +10,7 @@ import {safeDump} from 'js-yaml';
 let replace;
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
 
-async function updatePackageDetailsForProjectType(type = any.fromList(Object.values(projectTypes)), visibility) {
+async function updatePackageDetailsForProjectType(visibility, type = any.fromList(Object.values(projectTypes))) {
   let updatedContents;
   const pathToPackageFile = `${process.cwd()}/package.json`;
   const packageContents = JSON.parse(await fs.readFile(pathToPackageFile, 'utf-8'));
@@ -82,7 +82,7 @@ After(function () {
 
 When('the service is replaced', async function () {
   this.vcs = {owner: any.word(), name: any.word()};
-  await updatePackageDetailsForProjectType(this.projectType, this.visibility);
+  await updatePackageDetailsForProjectType(this.visibility, this.projectType);
 
   this.results = await replace({projectRoot: process.cwd(), vcs: this.vcs});
 });
