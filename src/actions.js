@@ -1,7 +1,6 @@
 import {promises as fs} from 'fs';
 import {scaffold} from '@form8ion/github-actions-node-ci';
 import {info} from '@travi/cli-messages';
-import determineProjectType from './project-type';
 
 function isPublicPackage(publishConfig) {
   return publishConfig && 'public' === publishConfig.access;
@@ -24,7 +23,6 @@ export default async function ({projectRoot, vcs}) {
       ...scripts['test:unit'] && {unit: true},
       ...scripts['test:integration'] && {integration: true}
     },
-    visibility: determineVisibility(publishConfig),
-    projectType: determineProjectType(packageDetails)
+    visibility: determineVisibility(publishConfig)
   });
 }
