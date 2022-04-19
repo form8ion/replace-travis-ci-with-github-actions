@@ -95,6 +95,6 @@
     "deepmerge": "^4.2.2",
     "execa": "^5.0.0",
     "remark": "^13.0.0",
-    "remark-remove-travis-ci-badge": "1.0.0"
+    "remark-remove-travis-ci-badge": "2.0.0"
   }
 }
