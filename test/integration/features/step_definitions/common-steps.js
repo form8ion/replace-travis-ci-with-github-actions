@@ -3,7 +3,7 @@ import {After, Before, When} from '@cucumber/cucumber';
 import any from '@travi/any';
 import stubbedFs from 'mock-fs';
 import td from 'testdouble';
-import {safeDump} from 'js-yaml';
+import {dump} from 'js-yaml';
 
 let replace;
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
@@ -17,7 +17,7 @@ Before(function () {
   stubbedFs({
     node_modules: stubbedNodeModules,
     'package.json': JSON.stringify({scripts: {}}),
-    '.travis.yml': safeDump(any.simpleObject()),
+    '.travis.yml': dump(any.simpleObject()),
     'README.md': `# project-name
 
 <!--status-badges start -->
