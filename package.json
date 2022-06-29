@@ -76,9 +76,9 @@
     "mock-fs": "5.1.2",
     "npm-run-all": "4.1.5",
     "package-preview": "4.0.0",
-    "remark-cli": "9.0.0",
-    "remark-toc": "7.2.0",
-    "remark-usage": "9.0.0",
+    "remark-cli": "11.0.0",
+    "remark-toc": "8.0.1",
+    "remark-usage": "10.0.1",
     "rimraf": "3.0.2",
     "rollup": "2.75.7",
     "rollup-plugin-auto-external": "2.0.0",
@@ -91,7 +91,7 @@
     "@travi/cli-messages": "^1.0.4",
     "deepmerge": "^4.2.2",
     "execa": "^5.0.0",
-    "remark": "^13.0.0",
+    "remark": "^14.0.0",
     "remark-remove-travis-ci-badge": "2.0.1"
   }
 }
