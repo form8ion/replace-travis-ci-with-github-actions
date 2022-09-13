@@ -1,18 +1,21 @@
-import {resolve} from 'path';
+import {dirname, resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+
 import {After, Before, When} from '@cucumber/cucumber';
 import any from '@travi/any';
 import stubbedFs from 'mock-fs';
-import td from 'testdouble';
+import * as td from 'testdouble';
 import {dump} from 'js-yaml';
 
 let replace;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
 
-Before(function () {
-  this.execa = td.replace('execa');
+Before(async function () {
+  this.execa = await td.replaceEsm('@form8ion/execa-wrapper');
 
   // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-  ({replace} = require('@form8ion/replace-travis-ci-with-github-actions'));
+  ({replace} = await import('@form8ion/replace-travis-ci-with-github-actions'));
 
   stubbedFs({
     node_modules: stubbedNodeModules,
@@ -29,6 +32,7 @@ Before(function () {
 
 After(function () {
   stubbedFs.restore();
+  td.reset();
 });
 
 When('the service is replaced', async function () {

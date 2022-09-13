@@ -4,15 +4,19 @@
   "license": "MIT",
   "version": "0.0.0-semantically-released",
   "engines": {
-    "node": "^14.15 || >=16"
+    "node": ">=16"
   },
   "author": "Matt Travi <npm@travi.org> (https://matt.travi.org)",
   "repository": "form8ion/replace-travis-ci-with-github-actions",
   "bugs": "https://github.com/form8ion/replace-travis-ci-with-github-actions/issues",
   "homepage": "https://npm.im/@form8ion/replace-travis-ci-with-github-actions",
   "runkitExampleFilename": "./example.js",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.es.js",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "exports": {
+    "require": "./lib/index.js",
+    "import": "./lib/index.mjs"
+  },
   "sideEffects": false,
   "scripts": {
     "test": "npm-run-all --print-label build --parallel lint:* --parallel test:*",
@@ -34,9 +38,9 @@
     "test:unit:base": "DEBUG=any mocha 'src/**/*-test.js'",
     "lint:peer": "npm ls >/dev/null",
     "lint:gherkin": "gherkin-lint",
-    "pretest:integration": "preview",
+    "pretest:integration": "run-s build",
     "test:integration": "run-s 'test:integration:base -- --profile noWip'",
-    "test:integration:base": "DEBUG=any cucumber-js test/integration --profile base",
+    "test:integration:base": "NODE_OPTIONS=\"--loader=testdouble --enable-source-maps\" DEBUG=any cucumber-js test/integration",
     "test:integration:debug": "DEBUG=test run-s test:integration",
     "test:integration:wip": "run-s 'test:integration:base -- --profile wip'",
     "test:integration:wip:debug": "DEBUG=test run-s 'test:integration:wip'",
@@ -51,11 +55,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@form8ion/github-actions-node-ci": "^3.0.0",
-    "@form8ion/javascript-core": "^6.0.0",
+    "@form8ion/execa-wrapper": "^1.0.0",
+    "@form8ion/github-actions-node-ci": "^3.8.2",
+    "@form8ion/javascript-core": "^7.0.0",
     "@travi/cli-messages": "^1.0.4",
     "deepmerge": "^4.2.2",
-    "execa": "^5.0.0",
     "remark": "^13.0.0",
     "remark-remove-travis-ci-badge": "2.0.2"
   },
@@ -84,7 +88,6 @@
     "mocha": "10.0.0",
     "mock-fs": "5.1.4",
     "npm-run-all": "4.1.5",
-    "package-preview": "4.0.0",
     "remark-cli": "9.0.0",
     "remark-toc": "7.2.0",
     "remark-usage": "9.0.0",

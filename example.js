@@ -2,7 +2,7 @@
 // remark-usage-ignore-next 2
 import stubbedFs from 'mock-fs';
 import {dump} from 'js-yaml';
-import {replace} from './lib/index.cjs';
+import {replace} from './lib/index.js';
 
 // remark-usage-ignore-next 5
 stubbedFs({

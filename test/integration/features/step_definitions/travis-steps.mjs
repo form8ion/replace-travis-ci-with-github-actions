@@ -2,7 +2,7 @@ import {promises as fs} from 'fs';
 import {fileExists} from '@form8ion/core';
 import {Given, Then} from '@cucumber/cucumber';
 import {assert} from 'chai';
-import td from 'testdouble';
+import * as td from 'testdouble';
 
 Given('the travis config lint script is enabled', async function () {
   await fs.writeFile(
@@ -42,7 +42,7 @@ Then('the travis config is removed', async function () {
   assert.isUndefined(pkg.scripts['disabled:lint:travis']);
   assert.isUndefined(pkg.scripts['lint:travis']);
   assert.isFalse(await fileExists(`${process.cwd()}/.travis.yml`));
-  td.verify(this.execa('npm', ['uninstall', 'travis-lint', '@travi/travis-lint']));
+  td.verify(this.execa.default('npm', ['uninstall', 'travis-lint', '@travi/travis-lint']));
 });
 
 Then('the travis status badge is removed', async function () {
