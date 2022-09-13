@@ -40,7 +40,7 @@
     "lint:gherkin": "gherkin-lint",
     "pretest:integration": "run-s build",
     "test:integration": "run-s 'test:integration:base -- --profile noWip'",
-    "test:integration:base": "DEBUG=any cucumber-js test/integration --profile base",
+    "test:integration:base": "NODE_OPTIONS=\"--loader=testdouble --enable-source-maps\" DEBUG=any cucumber-js test/integration",
     "test:integration:debug": "DEBUG=test run-s test:integration",
     "test:integration:wip": "run-s 'test:integration:base -- --profile wip'",
     "test:integration:wip:debug": "DEBUG=test run-s 'test:integration:wip'",
@@ -55,11 +55,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@form8ion/github-actions-node-ci": "^3.0.0",
+    "@form8ion/execa-wrapper": "^1.0.0",
+    "@form8ion/github-actions-node-ci": "^3.8.2",
     "@form8ion/javascript-core": "^7.0.0",
     "@travi/cli-messages": "^1.0.4",
     "deepmerge": "^4.2.2",
-    "execa": "^5.0.0",
     "remark": "^13.0.0",
     "remark-remove-travis-ci-badge": "2.0.2"
   },
