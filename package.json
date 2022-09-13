@@ -11,8 +11,12 @@
   "bugs": "https://github.com/form8ion/replace-travis-ci-with-github-actions/issues",
   "homepage": "https://npm.im/@form8ion/replace-travis-ci-with-github-actions",
   "runkitExampleFilename": "./example.js",
-  "main": "lib/index.cjs.js",
-  "module": "lib/index.es.js",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "exports": {
+    "require": "./lib/index.js",
+    "import": "./lib/index.mjs"
+  },
   "sideEffects": false,
   "scripts": {
     "test": "npm-run-all --print-label build --parallel lint:* --parallel test:*",
