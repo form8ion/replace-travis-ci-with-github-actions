@@ -1,5 +1,5 @@
 import {promises as fs} from 'fs';
-import * as actionsScaffolder from '@form8ion/github-actions-node-ci';
+import actionsScaffolder from '@form8ion/github-actions-node-ci';
 import sinon from 'sinon';
 import {assert} from 'chai';
 import any from '@travi/any';
