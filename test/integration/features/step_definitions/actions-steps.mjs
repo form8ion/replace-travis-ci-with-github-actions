@@ -10,7 +10,7 @@ Then('the workflow is defined for GitHub Actions', async function () {
     badges.status['github-actions-ci'],
     {
       text: 'Node CI Workflow Status',
-      img: `https://github.com/${owner}/${repoName}/workflows/Node.js%20CI/badge.svg`,
+      img: `https://img.shields.io/github/actions/workflow/status/${owner}/${repoName}/node-ci.yml.svg?branch=master&logo=github`,
       link: `https://github.com/${owner}/${repoName}/actions?query=workflow%3A%22Node.js+CI%22+branch%3Amaster`
     }
   );
