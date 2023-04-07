@@ -1,4 +1,4 @@
-import {promises as fs} from 'fs';
+import {promises as fs} from 'node:fs';
 import {info} from '@travi/cli-messages';
 import removeBadgePlugin from 'remark-remove-travis-ci-badge';
 import execa from '../thirdparty-wrappers/execa';
