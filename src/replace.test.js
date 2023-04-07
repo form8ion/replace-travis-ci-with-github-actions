@@ -2,9 +2,9 @@ import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import * as travisRemover from './travis';
-import * as actionsEnabler from './actions';
-import replace from './replace';
+import * as travisRemover from './travis.js';
+import * as actionsEnabler from './actions.js';
+import replace from './replace.js';
 
 vi.mock('./travis');
 vi.mock('./actions');

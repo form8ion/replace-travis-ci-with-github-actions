@@ -8,7 +8,7 @@ import * as td from 'testdouble';
 import {dump} from 'js-yaml';
 
 let replace;
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));                  // eslint-disable-line no-underscore-dangle
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
 
 Before(async function () {

@@ -5,7 +5,7 @@ import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import enable from './actions';
+import enable from './actions.js';
 
 vi.mock('node:fs');
 vi.mock('@form8ion/github-actions-node-ci');

@@ -5,13 +5,13 @@ import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import * as execa from '../thirdparty-wrappers/execa';
-import * as remark from '../thirdparty-wrappers/remark';
-import remove from './travis';
+import * as execa from '../thirdparty-wrappers/execa.js';
+import * as remark from '../thirdparty-wrappers/remark.js';
+import remove from './travis.js';
 
 vi.mock('node:fs');
-vi.mock('../thirdparty-wrappers/execa');
-vi.mock('../thirdparty-wrappers/remark');
+vi.mock('../thirdparty-wrappers/execa.js');
+vi.mock('../thirdparty-wrappers/remark.js');
 
 describe('travis-ci', () => {
   afterEach(() => {

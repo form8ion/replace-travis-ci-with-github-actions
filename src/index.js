@@ -1,1 +1,1 @@
-export {default as replace} from './replace';
+export {default as replace} from './replace.js';
