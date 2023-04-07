@@ -1,9 +1,9 @@
 import {promises as fs} from 'node:fs';
+import {remark} from 'remark';
 import {info} from '@travi/cli-messages';
 import removeBadgePlugin from 'remark-remove-travis-ci-badge';
 
 import execa from '../thirdparty-wrappers/execa.js';
-import remark from '../thirdparty-wrappers/remark.js';
 
 export default async function ({projectRoot}) {
   info('Removing Travis CI configuration', {level: 'secondary'});

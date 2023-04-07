@@ -58,7 +58,7 @@
     "@form8ion/javascript-core": "^8.0.0",
     "@travi/cli-messages": "^1.0.4",
     "deepmerge": "^4.2.2",
-    "remark": "^13.0.0",
+    "remark": "^14.0.2",
     "remark-remove-travis-ci-badge": "2.0.2"
   },
   "devDependencies": {
@@ -69,7 +69,7 @@
     "@form8ion/core": "2.0.0",
     "@form8ion/eslint-config": "5.0.28",
     "@form8ion/eslint-config-cucumber": "1.4.1",
-    "@form8ion/remark-lint-preset": "1.0.13",
+    "@form8ion/remark-lint-preset": "5.0.0",
     "@travi/any": "2.1.8",
     "babel-plugin-istanbul": "6.1.1",
     "ban-sensitive-files": "1.9.19",
@@ -85,7 +85,7 @@
     "ls-engines": "0.9.0",
     "mock-fs": "5.2.0",
     "npm-run-all": "4.1.5",
-    "remark-cli": "9.0.0",
+    "remark-cli": "11.0.0",
     "remark-toc": "8.0.1",
     "remark-usage": "10.0.1",
     "rimraf": "4.4.1",

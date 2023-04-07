@@ -1,4 +1,5 @@
 import {promises as fs} from 'node:fs';
+import {remark} from 'remark';
 import removeBadgePlugin from 'remark-remove-travis-ci-badge';
 
 import {afterEach, describe, expect, it, vi} from 'vitest';
@@ -6,12 +7,11 @@ import any from '@travi/any';
 import {when} from 'jest-when';
 
 import * as execa from '../thirdparty-wrappers/execa.js';
-import * as remark from '../thirdparty-wrappers/remark.js';
 import remove from './travis.js';
 
 vi.mock('node:fs');
+vi.mock('remark');
 vi.mock('../thirdparty-wrappers/execa.js');
-vi.mock('../thirdparty-wrappers/remark.js');
 
 describe('travis-ci', () => {
   afterEach(() => {
@@ -34,7 +34,7 @@ describe('travis-ci', () => {
         'disabled:lint:travis': any.string()
       }
     }));
-    remark.default.mockReturnValue({use});
+    remark.mockReturnValue({use});
     when(use).calledWith(removeBadgePlugin).mockReturnValue({process});
     when(process).calledWith(existingReadmeContents).mockResolvedValue(updatedFileContents);
 
