@@ -59,7 +59,7 @@
     "@travi/cli-messages": "^1.0.4",
     "deepmerge": "^4.2.2",
     "remark": "^14.0.2",
-    "remark-remove-travis-ci-badge": "2.0.2"
+    "remark-remove-travis-ci-badge": "3.0.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "9.1.0",
