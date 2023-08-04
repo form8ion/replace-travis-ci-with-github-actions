@@ -6,6 +6,7 @@ utility to remove Travis-CI configuration and enable GitHub Actions
 
 [![Node CI Workflow Status][github-actions-ci-badge]][github-actions-ci-link]
 [![Codecov][coverage-badge]][coverage-link]
+![SLSA Level 2][slsa-badge]
 
 <!--status-badges end -->
 
@@ -132,3 +133,5 @@ $ npm test
 [runkit-badge]: https://badge.runkitcdn.com/@form8ion/replace-travis-ci-with-github-actions.svg
 
 [node-badge]: https://img.shields.io/node/v/@form8ion/replace-travis-ci-with-github-actions?logo=node.js
+
+[slsa-badge]: https://slsa.dev/images/gh-badge-level2.svg
