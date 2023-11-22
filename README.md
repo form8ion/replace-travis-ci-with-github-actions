@@ -118,7 +118,7 @@ $ npm test
 
 [coverage-link]: https://codecov.io/github/form8ion/replace-travis-ci-with-github-actions
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/form8ion/replace-travis-ci-with-github-actions.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/form8ion/replace-travis-ci-with-github-actions?logo=codecov
 
 [license-link]: LICENSE
 
@@ -126,7 +126,7 @@ $ npm test
 
 [npm-link]: https://www.npmjs.com/package/@form8ion/replace-travis-ci-with-github-actions
 
-[npm-badge]: https://img.shields.io/npm/v/@form8ion/replace-travis-ci-with-github-actions.svg
+[npm-badge]: https://img.shields.io/npm/v/@form8ion/replace-travis-ci-with-github-actions?logo=npm
 
 [runkit-link]: https://npm.runkit.com/@form8ion/replace-travis-ci-with-github-actions
 
