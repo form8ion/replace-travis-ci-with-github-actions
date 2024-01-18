@@ -56,7 +56,7 @@
   "dependencies": {
     "@form8ion/execa-wrapper": "^1.0.0",
     "@form8ion/github-actions-node-ci": "^4.0.0",
-    "@form8ion/javascript-core": "^10.0.0",
+    "@form8ion/javascript-core": "^11.0.0",
     "@travi/cli-messages": "^1.0.4",
     "deepmerge": "^4.2.2",
     "remark": "^15.0.0",
