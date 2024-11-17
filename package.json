@@ -63,7 +63,7 @@
     "remark-remove-travis-ci-badge": "3.0.3"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "11.0.1",
+    "@cucumber/cucumber": "11.1.0",
     "@form8ion/commitlint-config": "2.0.0",
     "@form8ion/core": "4.8.0",
     "@form8ion/eslint-config": "7.0.12",
